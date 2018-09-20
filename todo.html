@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todo</title>
+    <!-- 引入样式 -->
+
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+<el-container>
+    <el-input v-model="input" placeholder="请输入内容"></el-input>
+    <el-button type="success" @click="add()">提交</el-button>
+</el-container>
+    <el-table
+            :data="list"
+            style="width: 100%">
+        <el-table-column
+                prop="todo"
+                label="要做的事"
+                >
+        </el-table-column>
+        <el-table-column
+                prop="date"
+                label="日期"
+                >
+        </el-table-column>
+        <el-table-column
+                fixed="right"
+                label="操作"
+                width="180"
+                >
+            <template slot-scope="scope">
+                <el-button icon="el-icon-error"
+                        @click="del(scope.$index, list)"
+                        >移除
+
+                </el-button>
+            </template>
+        </el-table-column>
+    </el-table>
+</div>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        methods: {
+            del:function(index,rows){
+
+                    rows.splice(index, 1);
+
+            },
+            add:function(){
+                var obj={todo:this.input,date:new Date().toDateString()};
+                    this.list.push(obj)
+            }
+        },
+        data:{
+            id:'',
+            input:'',
+            list:[
+                {todo:'去玩1',date: new Date().toDateString()},
+                {todo:'去玩2',date: new Date().toDateString()},
+                {todo:'去玩2',date: new Date().toDateString()},
+            ]
+        }
+    })
+</script>
+<!-- 引入组件库 -->
+
+
+</body>
+</html>
