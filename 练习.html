@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+    <style>
+        h1{
+            text-align: center;
+            transition:1s ease all;
+        }
+        h1:hover{
+            transform: translateX(-50%);
+        }
+        h2{
+            text-shadow:10px 10px rgba(0,0,0,.5);
+        }
+        h3:hover{
+
+
+            color:black
+        }
+        h4{
+            line-height: 200px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <h1 style="color:blue">{{msg}}</h1>
+    <h2 style="color:red" @hover='animate'>{{msg}}</h2>
+    <h3 style="color:yellow" @click.prevent='change()'>{{msg}}</h3>
+    <h4 :style='style'>{{msg}}</h4>
+
+</div>
+<script>
+var vm=new Vue({
+    el:'#app',
+    data:{
+        animate:'transform: translateX(-50%);',
+        style:'color:pink',
+        msg:'这是第一个html程序'
+    },
+    methods:{
+        change:function(){
+            this.msg='hello world';
+        }
+    }
+})
+</script>
+
+
+</body>
+</html>
