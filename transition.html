@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <title>transition</title>
     <style>
-        .v-enter,
-        .v-leave-to{
+        .myApp-enter,
+        .myApp-leave-to{
             opacity: 0;
         }
-        .v-enter-active,
-        .v-leave-active{
+        .myApp-enter-active,
+        .myApp-leave-active{
             transition:all 1s ease;
         }
     </style>
@@ -19,7 +19,7 @@
 <body>
 <div id="app">
     <input type="button" value="toggle" @click="flag=!flag">
-    <transition>
+    <transition name="myApp">
         <h1 v-if="flag">哈哈</h1>
     </transition>
 </div>
